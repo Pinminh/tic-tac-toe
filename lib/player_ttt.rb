@@ -15,7 +15,9 @@ class PlayerTTT
   end
 
   def play(position)
-    return false if @table.nil?
+    raise 'no table attached to player' if @table.nil?
+    raise 'invalid position' if position < 1 || position > 9
+    raise 'occupied position' if @table.occupied?(position)
 
     @table.add_mark(position, @mark_type)
   end

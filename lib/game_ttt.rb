@@ -19,7 +19,7 @@ class GameTTT
     print ' <?> Who will go first? (X or O): '
     $stdout.flush
     self.go_first_player = gets.chomp.strip.upcase
-  rescue StandardError
+  rescue RuntimeError
     puts ' <!> Can only choose X or O. Please try again!'.colorize(:red)
     retry
   else
@@ -27,7 +27,7 @@ class GameTTT
   end
 
   def play_round
-    clear_terminal
+    @table.print
     ask_for_movement
     @x_win = @player_x.win?
     @o_win = @player_o.win?
@@ -40,6 +40,7 @@ class GameTTT
     ask_who_go_first
 
     9.times do
+      clear_terminal
       play_round
       break if @x_win || @o_win
     end
@@ -58,15 +59,17 @@ class GameTTT
   end
 
   def ask_for_movement
-    @table.print
-    loop do
-      print " <?> Enter position for #{@current_player.mark_type}: "
-      position = gets.chomp.to_i
+    print " <?> Enter position for #{@current_player.mark_type}: "
+    position = gets.chomp.to_i
 
-      break if @current_player.play(position)
-
+    @current_player.play(position)
+  rescue RuntimeError => e
+    if e.to_s == 'invalid position'
       puts ' <!> Can only choose from 1 to 9. Please try again!'.colorize(:red)
+    else
+      puts ' <!> Chosen position is occupied. Please try again!'.colorize(:red)
     end
+    retry
   end
 
   def clear_terminal
