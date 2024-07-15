@@ -1,7 +1,7 @@
 # Tic-tac-toe player object
 class PlayerTTT
   def initialize(mark_type)
-    raise 'invalid mark type' if mark_type != 'X' || mark_type != 'O'
+    raise 'invalid mark type' if mark_type != 'X' && mark_type != 'O'
 
     @mark_type = mark_type
     @score = 0
