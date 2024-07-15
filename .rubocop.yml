@@ -9,3 +9,9 @@
 #
 # See https://docs.rubocop.org/rubocop/configuration
 require: rubocop-performance
+
+AllCops:
+  NewCops: enable
+
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: never
