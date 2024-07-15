@@ -1,5 +1,7 @@
 # Tic-tac-toe player object
 class PlayerTTT
+  attr_reader :mark_type
+
   def initialize(mark_type)
     raise 'invalid mark type' if mark_type != 'X' && mark_type != 'O'
 

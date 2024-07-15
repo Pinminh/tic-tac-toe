@@ -9,12 +9,12 @@ class TableTTT
   end
 
   def add_mark(position, mark_type)
-    raise 'invalid mark type' if mark_type != 'X' || mark_type != 'O'
+    raise 'invalid mark type' if mark_type != 'X' && mark_type != 'O'
     return false if position < 1 || position > 9
 
     @table[position - 1] = mark_type
-    @mark_x.push(position) if mark_type == 'X'
-    @mark_o.push(position) if mark_type == 'O'
+    @mark_x.push(position).sort! if mark_type == 'X'
+    @mark_o.push(position).sort! if mark_type == 'O'
 
     true
   end
