@@ -26,7 +26,7 @@ class TableTTT
       return false if (cmark = colorize_mark(mark)).nil?
 
       line += " #{cmark} |"
-      line.prepend('|') if (index % 3).zero?
+      line.prepend("\t|") if (index % 3).zero?
       puts line if index % 3 == 2
       line = '' if index % 3 == 2
     end

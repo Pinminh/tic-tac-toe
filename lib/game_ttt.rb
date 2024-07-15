@@ -34,6 +34,14 @@ class GameTTT
     @current_player = @current_player.mark_type == 'X' ? @player_o : @player_x
   end
 
+  def conclude_game
+    @table.print
+
+    return puts ' </> The match is draw!'.colorize(:yellow) unless @x_win || @o_win
+
+    puts " </> #{@x_win ? 'X' : 'O'}-player has won! Congratulations!".colorize(:yellow)
+  end
+
   def start
     clear_terminal
     puts 'Start Tic-tac-toe game...'.colorize(:green)
@@ -45,9 +53,8 @@ class GameTTT
       break if @x_win || @o_win
     end
 
-    return puts ' </> The match is draw!'.colorize(:yellow) unless @x_win || @o_win
-
-    puts " </> #{@x_win ? 'X' : 'O'} has won! Congratulations!".colorize(:yellow)
+    clear_terminal
+    conclude_game
   end
 
   private
