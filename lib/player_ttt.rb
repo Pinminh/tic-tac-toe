@@ -1,6 +1,6 @@
 # Tic-tac-toe player object
 class PlayerTTT
-  attr_reader :mark_type
+  attr_reader :mark_type, :score
 
   def initialize(mark_type)
     raise 'invalid mark type' if mark_type != 'X' && mark_type != 'O'
@@ -34,6 +34,14 @@ class PlayerTTT
     end
 
     result
+  end
+
+  def add_score
+    @score += 1
+  end
+
+  def reset_score
+    @score = 0
   end
 
   private

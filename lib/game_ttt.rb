@@ -29,8 +29,13 @@ class GameTTT
   def play_round
     @table.print
     ask_for_movement
+
     @x_win = @player_x.win?
     @o_win = @player_o.win?
+
+    @player_x.add_score if @x_win
+    @player_o.add_score if @o_win
+
     @current_player = @current_player.mark_type == 'X' ? @player_o : @player_x
   end
 
