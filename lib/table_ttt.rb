@@ -10,13 +10,11 @@ class TableTTT
 
   def add_mark(position, mark_type)
     raise 'invalid mark type' if mark_type != 'X' || mark_type != 'O'
+    return false if position < 1 || position > 9
 
-    index = (position - 1) % @table.length
-    return false if @table[index] == 'X' || @table[index] == 'O'
-
-    @table[index] = mark_type
-    @mark_x.push(mark_type) if mark_type == 'X'
-    @mark_o.push(mark_type) if mark_type == 'O'
+    @table[position - 1] = mark_type
+    @mark_x.push(position) if mark_type == 'X'
+    @mark_o.push(position) if mark_type == 'O'
 
     true
   end
