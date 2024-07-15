@@ -36,6 +36,16 @@ class TableTTT
     true
   end
 
+  def mark_x
+    @mark_x.map(&:clone)
+  end
+
+  def mark_o
+    @mark_o.map(&:clone)
+  end
+
+  private
+
   def colorize_mark(mark)
     cmark = nil
     cmark = mark.to_s.colorize(:gray) if mark.is_a?(Integer)
