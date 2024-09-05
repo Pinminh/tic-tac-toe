@@ -7,3 +7,5 @@ source 'https://rubygems.org'
 gem 'colorize', '~> 1.1'
 
 gem 'rubocop-performance', '~> 1.21', require: false
+
+gem 'rspec', '~> 3.13'
